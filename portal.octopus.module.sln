@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CA6F5917-B7F3-4B5B-BFF8-F02664A49CDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{B64F78B8-569F-4E31-9A59-D1398CDBF8A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{046473AE-AF13-4099-8D0A-3DBCA31CE381}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chaos.Octopus", "src\app\Chaos.Octopus\Chaos.Octopus.csproj", "{1979DD6E-6232-4CEA-A5AF-8876483C8EFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chaos.Octopus.Test", "src\test\Chaos.Octopus.Test\Chaos.Octopus.Test.csproj", "{4004735D-34B5-4429-B0DD-EAC116B333CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1979DD6E-6232-4CEA-A5AF-8876483C8EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1979DD6E-6232-4CEA-A5AF-8876483C8EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1979DD6E-6232-4CEA-A5AF-8876483C8EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1979DD6E-6232-4CEA-A5AF-8876483C8EFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4004735D-34B5-4429-B0DD-EAC116B333CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4004735D-34B5-4429-B0DD-EAC116B333CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4004735D-34B5-4429-B0DD-EAC116B333CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4004735D-34B5-4429-B0DD-EAC116B333CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B64F78B8-569F-4E31-9A59-D1398CDBF8A6} = {CA6F5917-B7F3-4B5B-BFF8-F02664A49CDF}
+		{046473AE-AF13-4099-8D0A-3DBCA31CE381} = {CA6F5917-B7F3-4B5B-BFF8-F02664A49CDF}
+		{1979DD6E-6232-4CEA-A5AF-8876483C8EFB} = {B64F78B8-569F-4E31-9A59-D1398CDBF8A6}
+		{4004735D-34B5-4429-B0DD-EAC116B333CF} = {046473AE-AF13-4099-8D0A-3DBCA31CE381}
+	EndGlobalSection
+EndGlobal

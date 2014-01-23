@@ -1,0 +1,17 @@
+_ReSharper*
+_NCrunch*
+
+src/**/bin
+src/**/obj
+src/*/bin/*.Config
+src/*/App.Config
+src/*/obj/*
+src/*.user
+src/*.suo
+src/*.xap
+src/*.Cache
+src/*.StyleCop
+
+*.ncrunchsolution
+*.ncrunchproject
+*.suo
