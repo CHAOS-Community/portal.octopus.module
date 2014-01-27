@@ -5,6 +5,7 @@
     using Octopus.Module;
     using Octopus.Module.Extension.v6;
     using Portal.Core;
+    using Portal.Core.Data.Model;
     using Portal.Core.Exceptions;
 
     [TestFixture]
@@ -53,10 +54,31 @@
         {
             var module = new OctopusModule();
             var portal = new Mock<IPortalApplication>();
+            portal.Setup(m => m.PortalRepository.ModuleGet("Octopus")).Returns(Make_OctopusModuleConfig());
 
             module.Load(portal.Object);
 
             Assert.That(module.PortalApplication, Is.Not.Null);
+        }
+
+        [Test]
+        public void Load_Default_OctopusRepositoryIsSet()
+        {
+            var module = new OctopusModule();
+            var portal = new Mock<IPortalApplication>();
+            portal.Setup(m => m.PortalRepository.ModuleGet("Octopus")).Returns(Make_OctopusModuleConfig());
+
+            module.Load(portal.Object);
+
+            Assert.That(module.OctopusRepository, Is.Not.Null);
+        }
+
+        private Module Make_OctopusModuleConfig()
+        {
+            return new Module
+                {
+                    Configuration = "<OctopusConfig><ConnectionString>some connectionstring</ConnectionString></OctopusConfig>"
+                };
         }
     }
 }

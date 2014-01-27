@@ -1,12 +1,16 @@
 ﻿namespace Chaos.Octopus.Module.Data
 {
-    using System;
     using CHAOS.Data;
     using CHAOS.Data.MySql;
     using Mapping;
     using Model;
 
-    public class OctopusRepository
+    public interface IOctopusRepository
+    {
+        IJobRepository Job { get; set; }
+    }
+
+    public class OctopusRepository : IOctopusRepository
     {
         private readonly Gateway _Gateway;
 
@@ -22,6 +26,6 @@
             ReaderExtensions.Mappings.Add(typeof(Job), new JobMapping());
         }
 
-        private JobRepository Job { get; set; }
+        public IJobRepository Job { get; set; }
     }
 }

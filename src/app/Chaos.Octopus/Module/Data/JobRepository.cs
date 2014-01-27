@@ -6,7 +6,13 @@
     using MySql.Data.MySqlClient;
     using Portal.Core.Exceptions;
 
-    public class JobRepository
+    public interface IJobRepository
+    {
+        IEnumerable<Job> Get(string status);
+        void Set(string id, string status, string data);
+    }
+
+    public class JobRepository : IJobRepository
     {
         public Gateway Gateway { get; set; }
 
