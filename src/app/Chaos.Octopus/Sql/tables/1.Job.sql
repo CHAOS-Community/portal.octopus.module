@@ -1,0 +1,7 @@
+﻿CREATE TABLE `Job` (
+  `Id` VARCHAR(64) NOT NULL,
+  `Status` VARCHAR(255) NULL,
+  `Data` MEDIUMTEXT NULL,
+  `DateCreated` DATETIME NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE INDEX `Id_UNIQUE` (`Id` ASC));
