@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Xml.Linq;
+    using Bindings;
     using CHAOS.Serialization;
     using CHAOS.Serialization.Standard;
     using Data;
@@ -41,6 +42,7 @@
         public void Load(IPortalApplication portalApplication)
         {
             PortalApplication = portalApplication;
+            PortalApplication.Bindings.Add(typeof(Extension.Dto.Job), new JobParameterBinding());
 
             var module = PortalApplication.PortalRepository.ModuleGet("Octopus");
             var config = OctopusConfig.Create(module);
