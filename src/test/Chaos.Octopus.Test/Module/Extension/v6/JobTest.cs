@@ -23,5 +23,29 @@
 
             Assert.That(results.Count(), Is.EqualTo(2));
         }
+
+        [Test]
+        public void Set_GivenJob_CallRepository()
+        {
+            var repository = new Mock<IOctopusRepository>();
+            var portal = new Mock<IPortalApplication>();
+            var extension = new Job(portal.Object, repository.Object);
+            var job = Make_JobDto();
+            repository.Setup(m => m.Job.Set(job.Id, job.Status, job.Data));
+
+            extension.Set(job);
+
+            repository.VerifyAll();
+        }
+
+        private static Octopus.Module.Extension.Dto.Job Make_JobDto()
+        {
+            return new Octopus.Module.Extension.Dto.Job
+                {
+                    Id = "id",
+                    Status = "status",
+                    Data = "{'Id':'id', 'Status':'status', 'steps':[]}"
+                };
+        }
     }
 }

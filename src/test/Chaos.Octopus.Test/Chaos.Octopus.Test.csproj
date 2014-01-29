@@ -43,6 +43,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Module\Extension\Dto\JobTest.cs" />
     <Compile Include="Module\Extension\v6\JobTest.cs" />
     <Compile Include="Module\OctopusModuleTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

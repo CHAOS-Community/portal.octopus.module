@@ -21,5 +21,10 @@
 
             return results.Select(Dto.Job.Create);
         }
+
+        public void Set(Dto.Job job)
+        {
+            Repository.Job.Set(job.Id, job.Status, job.Data);
+        }
     }
 }
