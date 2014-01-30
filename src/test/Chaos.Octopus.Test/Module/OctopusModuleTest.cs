@@ -1,14 +1,12 @@
 ﻿namespace Chaos.Octopus.Test.Module
 {
     using System;
-    using System.Collections.Generic;
     using Moq;
     using NUnit.Framework;
     using Octopus.Module;
     using Octopus.Module.Bindings;
     using Octopus.Module.Extension.v6;
     using Portal.Core;
-    using Portal.Core.Bindings;
     using Portal.Core.Data.Model;
     using Portal.Core.Exceptions;
 
