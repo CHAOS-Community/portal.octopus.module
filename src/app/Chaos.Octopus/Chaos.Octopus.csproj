@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\storedprocedure\Job_GetIncomeplete.sql" />
     <Content Include="Sql\storedprocedure\Job_Set.sql" />
     <Content Include="Sql\storedprocedure\Job_Get.sql" />
     <Content Include="Sql\tables\1.Job.sql" />
