@@ -1,5 +1,6 @@
 ﻿namespace Chaos.Octopus.Module.Extension.v6
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Data;
@@ -22,8 +23,21 @@
             return results.Select(Dto.Job.Create);
         }
 
+        public IEnumerable<Dto.Job> GetIncomplete()
+        {
+            var results = Repository.Job.GetIncomplete();
+
+            return results.Select(Dto.Job.Create);
+        }
+
         public void Set(Dto.Job job)
         {
+            if (string.IsNullOrEmpty(job.Id))
+            {
+                job.Id = Guid.NewGuid().ToString();
+                job.Status = "new";
+            }
+
             Repository.Job.Set(job.Id, job.Status, job.Data);
         }
     }
