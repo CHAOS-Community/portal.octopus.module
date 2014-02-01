@@ -30,7 +30,7 @@
             return results.Select(Dto.Job.Create);
         }
 
-        public void Set(Dto.Job job)
+        public uint Set(Dto.Job job)
         {
             if (string.IsNullOrEmpty(job.Id))
             {
@@ -39,6 +39,8 @@
             }
 
             Repository.Job.Set(job.Id, job.Status, job.Data);
+
+            return 1;
         }
     }
 }
