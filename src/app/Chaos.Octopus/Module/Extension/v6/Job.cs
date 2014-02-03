@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using Data;
+    using Newtonsoft.Json;
     using Portal.Core;
     using Portal.Core.Extension;
 
@@ -37,6 +38,8 @@
                 job.Id = Guid.NewGuid().ToString();
                 job.Status = "new";
             }
+            else if (string.IsNullOrEmpty(job.Status))
+                throw new MissingFieldException("Status missing");
 
             Repository.Job.Set(job.Id, job.Status, job.Data);
 

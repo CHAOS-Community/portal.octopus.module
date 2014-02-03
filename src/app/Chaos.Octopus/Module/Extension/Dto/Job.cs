@@ -17,16 +17,20 @@
                 };
         }
 
-        [Serialize]
+        [Serialize("id")]
+        [Newtonsoft.Json.JsonProperty("id")]
         public string Id { get; set; }
 
-        [Serialize]
+        [Serialize("status")]
+        [Newtonsoft.Json.JsonProperty("status")]
         public string Status { get; set; }
 
-        [Serialize]
+        [Serialize("data")]
+        [Newtonsoft.Json.JsonProperty("data")]
         public string Data { get; set; }
 
-        [Serialize]
+        [Serialize("datecreated")]
+        [Newtonsoft.Json.JsonProperty("datecreated")]
         public DateTime DateCreated { get; set; }
     }
 }
