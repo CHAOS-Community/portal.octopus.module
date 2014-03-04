@@ -8,7 +8,7 @@
 
     public interface IJobRepository
     {
-        IEnumerable<Job> Get(string status);
+        IEnumerable<Job> Get(string id, string status);
         IEnumerable<Job> GetIncomplete();
         void Set(string id, string status, string data);
     }
@@ -22,10 +22,11 @@
             Gateway = gateway;
         }
 
-        public IEnumerable<Job> Get(string status)
+        public IEnumerable<Job> Get(string id, string status)
         {
             return Gateway.ExecuteQuery<Job>("Job_Get", new[]
                 {
+                    new MySqlParameter("Id", id),
                     new MySqlParameter("Status", status)
                 });
         }

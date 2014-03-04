@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE Job_Get
 (
+	Id	VARCHAR(64),
 	Status VARCHAR(255)
 )
 BEGIN
@@ -9,6 +10,7 @@ BEGIN
 	FROM
 		Job
 	WHERE
-		(Status IS NULL OR Job.Status = Status);
+			(Id IS NULL OR Job.Id = Id)
+		AND (Status IS NULL OR Job.Status = Status);
 
 END

@@ -17,9 +17,9 @@
             var portal = new Mock<IPortalApplication>();
             var extension = new Job(portal.Object, repository.Object);
             var expected = new[] { new Octopus.Module.Data.Model.Job(), new Octopus.Module.Data.Model.Job() };
-            repository.Setup(m => m.Job.Get("status")).Returns(expected);
+            repository.Setup(m => m.Job.Get("Id", "status")).Returns(expected);
 
-            var results = extension.Get("status");
+            var results = extension.Get("Id", "status");
 
             Assert.That(results.Count(), Is.EqualTo(2));
         }

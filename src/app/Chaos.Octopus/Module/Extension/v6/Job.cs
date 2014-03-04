@@ -17,9 +17,9 @@
             Repository = repository;
         }
 
-        public IEnumerable<Dto.Job> Get(string status)
+        public IEnumerable<Dto.Job> Get(string id, string status)
         {
-            var results = Repository.Job.Get(status);
+            var results = Repository.Job.Get(id, status);
 
             return results.Select(Dto.Job.Create);
         }
@@ -31,19 +31,20 @@
             return results.Select(Dto.Job.Create);
         }
 
-        public uint Set(Dto.Job job)
+        public Dto.Job Set(Dto.Job job)
         {
             if (string.IsNullOrEmpty(job.Id))
             {
                 job.Id = Guid.NewGuid().ToString();
                 job.Status = "new";
+                job.DateCreated = DateTime.UtcNow;
             }
             else if (string.IsNullOrEmpty(job.Status))
                 throw new MissingFieldException("Status missing");
 
             Repository.Job.Set(job.Id, job.Status, job.Data);
 
-            return 1;
+            return job;
         }
     }
 }
