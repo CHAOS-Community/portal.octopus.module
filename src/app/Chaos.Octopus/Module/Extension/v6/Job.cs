@@ -17,6 +17,7 @@
             Repository = repository;
         }
 
+        // TODO: Requires Authentication
         public IEnumerable<Dto.Job> Get(string id, string status)
         {
             var results = Repository.Job.Get(id, status);
@@ -39,7 +40,7 @@
                 job.Status = "new";
                 job.DateCreated = DateTime.UtcNow;
             }
-            else if (string.IsNullOrEmpty(job.Status))
+            else if (string.IsNullOrEmpty(job.Status)) // TOTO: Improve message
                 throw new MissingFieldException("Status missing");
 
             Repository.Job.Set(job.Id, job.Status, job.Data);
