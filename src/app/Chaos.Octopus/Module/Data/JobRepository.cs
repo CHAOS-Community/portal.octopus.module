@@ -1,4 +1,6 @@
-﻿namespace Chaos.Octopus.Module.Data
+﻿using System;
+
+namespace Chaos.Octopus.Module.Data
 {
     using System.Collections.Generic;
     using CHAOS.Data.MySql;
@@ -10,7 +12,7 @@
     {
         IEnumerable<Job> Get(string id, string status);
         IEnumerable<Job> GetIncomplete();
-        void Set(string id, string status, string data);
+        void Set(string id, string status, string data, Guid createdByUserId);
     }
 
     public class JobRepository : IJobRepository
@@ -36,13 +38,14 @@
             return Gateway.ExecuteQuery<Job>("Job_GetIncomplete");
         }
 
-        public void Set(string id, string status, string data)
+        public void Set(string id, string status, string data, Guid createdByUserId)
         {
             var result = Gateway.ExecuteNonQuery("Job_Set", new[]
                 {
                     new MySqlParameter("Id", id),
                     new MySqlParameter("Status", status),
-                    new MySqlParameter("Data", data)
+                    new MySqlParameter("Data", data),
+                    new MySqlParameter("CreatedByUserId", createdByUserId.ToByteArray())
                 });
             
             if(result == 0)

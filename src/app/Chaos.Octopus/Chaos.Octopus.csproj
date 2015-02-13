@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sql\changes\01.00.001.sql" />
     <Content Include="Sql\storedprocedure\Job_GetIncomeplete.sql" />
     <Content Include="Sql\storedprocedure\Job_Set.sql" />
     <Content Include="Sql\storedprocedure\Job_Get.sql" />

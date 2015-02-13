@@ -16,7 +16,7 @@
                         Id = reader.GetString("Id"),
                         Status = reader.GetString("Status"),
                         Data = reader.GetString("Data"),
-                        DateCreated = reader.GetDateTime("DateCreated"),
+                        DateCreated = reader.GetDateTime("DateCreated")
                     };
             }
         }

@@ -11,5 +11,7 @@
         public string Data { get; set; }
 
         public DateTime DateCreated { get; set; }
+
+        public Guid CreatedByUserId { get; set; }
     }
 }

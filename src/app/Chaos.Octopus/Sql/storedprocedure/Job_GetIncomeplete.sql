@@ -8,6 +8,6 @@ BEGIN
 	FROM
 		Job
 	WHERE
-		Status <> 'complete';
+		Status <> 'complete' AND Status <> 'failed';
 
 END

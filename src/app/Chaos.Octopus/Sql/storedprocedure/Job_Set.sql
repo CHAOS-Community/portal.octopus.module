@@ -2,7 +2,8 @@
 (
 	Id VARCHAR(64),
 	Status VARCHAR(255),
-	Data MEDIUMTEXT
+	Data MEDIUMTEXT,
+	CreatedByUserId BINARY(16)
 )
 BEGIN
 
@@ -19,9 +20,9 @@ BEGIN
 	ELSE
 
 		INSERT INTO Job 
-			(Id, Status, Data, DateCreated)
+			(Id, Status, Data, DateCreated, CreatedByUserId)
 		VALUES
-			(Id, Status, Data, NOW());
+			(Id, Status, Data, NOW(), CreatedByUserId);
 
 	END IF;
 
