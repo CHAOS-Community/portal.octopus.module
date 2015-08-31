@@ -1,0 +1,10 @@
+﻿CREATE PROCEDURE Heartbeat_Set()
+BEGIN
+
+	INSERT INTO Heartbeat
+		(CreatedOn)
+	VALUES
+		(UTC_TIMESTAMP());
+
+	SELECT ROW_COUNT();
+END

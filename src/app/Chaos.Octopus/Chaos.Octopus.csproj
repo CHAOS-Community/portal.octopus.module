@@ -53,21 +53,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Module\Bindings\JobParameterBinding.cs" />
+    <Compile Include="Module\Data\HeartbeatRepository.cs" />
+    <Compile Include="Module\Data\IHeartbeatRepository.cs" />
     <Compile Include="Module\Data\JobRepository.cs" />
     <Compile Include="Module\Data\Mapping\JobMapping.cs" />
     <Compile Include="Module\Data\Model\Job.cs" />
     <Compile Include="Module\Data\OctopusRepository.cs" />
     <Compile Include="Module\Extension\Dto\Job.cs" />
+    <Compile Include="Module\Extension\v6\Heartbeat.cs" />
     <Compile Include="Module\Extension\v6\Job.cs" />
     <Compile Include="Module\OctopusModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sql\changes\01.00.001.sql" />
+    <Content Include="Sql\storedprocedure\Heartbeat_Set.sql" />
     <Content Include="Sql\storedprocedure\Job_GetIncomeplete.sql" />
     <Content Include="Sql\storedprocedure\Job_Set.sql" />
     <Content Include="Sql\storedprocedure\Job_Get.sql" />
     <Content Include="Sql\tables\1.Job.sql" />
+    <Content Include="Sql\tables\1.Heartbeat.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,25 +8,15 @@ namespace Chaos.Octopus.Test.Module.Extension.v6
   using Octopus.Module.Data;
   using Octopus.Module.Extension.v6;
   using Portal.Core;
-  using Portal.Core.Request;
 
   [TestFixture]
-  public class JobTest
+  public class JobTest : TestBase
   {
-    private Mock<IPortalRequest> portalRequest;
-
-    [SetUp]
-    public void Setup()
-    {
-      portalRequest = new Mock<IPortalRequest>();
-    }
-
     [Test]
     public void Get_GivenStatus_ReturnListFromRepository()
     {
       var repository = new Mock<IOctopusRepository>();
-      var portal = new Mock<IPortalApplication>();
-      var extension = Make_Extension(portal, repository);
+      var extension = Make_Extension(Portal, repository);
       var expected = new[] {new Octopus.Module.Data.Model.Job(), new Octopus.Module.Data.Model.Job()};
       repository.Setup(m => m.Job.Get("Id", "status")).Returns(expected);
 
@@ -39,8 +29,7 @@ namespace Chaos.Octopus.Test.Module.Extension.v6
     public void GetIncomplete_Default_ReturnListFromRepository()
     {
       var repository = new Mock<IOctopusRepository>();
-      var portal = new Mock<IPortalApplication>();
-      var extension = Make_Extension(portal, repository);
+      var extension = Make_Extension(Portal, repository);
       var expected = new[] {new Octopus.Module.Data.Model.Job(), new Octopus.Module.Data.Model.Job()};
       repository.Setup(m => m.Job.GetIncomplete()).Returns(expected);
 
@@ -53,8 +42,7 @@ namespace Chaos.Octopus.Test.Module.Extension.v6
     public void Set_GivenJob_CallRepository()
     {
       var repository = new Mock<IOctopusRepository>();
-      var portal = new Mock<IPortalApplication>();
-      var extension = Make_Extension(portal, repository);
+      var extension = Make_Extension(Portal, repository);
       var job = Make_JobDto();
       repository.Setup(m => m.Job.Set(job.Id, job.Status, job.Data, job.CreatedByUserId));
 
@@ -67,10 +55,9 @@ namespace Chaos.Octopus.Test.Module.Extension.v6
     public void Set_GivenJobWithoutId_StatusShouldBeSetToNewAndIdGenerated()
     {
       var repository = new Mock<IOctopusRepository>();
-      var portal = new Mock<IPortalApplication>();
-      var extension = Make_Extension(portal, repository);
+      var extension = Make_Extension(Portal, repository);
       var job = Make_NewJobDto();
-      portalRequest.Setup(p => p.User).Returns(new UserInfo());
+      PortalRequest.Setup(p => p.User).Returns(new UserInfo());
       repository.Setup(m => m.Job.Set(It.IsAny<string>(), "new", job.Data, job.CreatedByUserId));
 
       extension.Set(job);
@@ -80,7 +67,7 @@ namespace Chaos.Octopus.Test.Module.Extension.v6
 
     private Job Make_Extension(Mock<IPortalApplication> portal, Mock<IOctopusRepository> repository)
     {
-      return (Job) new Job(portal.Object, repository.Object).WithPortalRequest(portalRequest.Object);
+      return (Job) new Job(portal.Object, repository.Object).WithPortalRequest(PortalRequest.Object);
     }
 
     private static Octopus.Module.Extension.Dto.Job Make_JobDto()

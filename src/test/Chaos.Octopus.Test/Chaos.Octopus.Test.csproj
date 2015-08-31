@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Module\Extension\Dto\JobTest.cs" />
+    <Compile Include="Module\Extension\v6\HeartbeatTest.cs" />
     <Compile Include="Module\Extension\v6\JobTest.cs" />
+    <Compile Include="Module\Extension\v6\TestBase.cs" />
     <Compile Include="Module\OctopusModuleTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
