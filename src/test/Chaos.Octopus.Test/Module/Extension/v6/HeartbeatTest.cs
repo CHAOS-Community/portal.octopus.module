@@ -1,4 +1,5 @@
 ﻿using Chaos.Octopus.Module.Data;
+using Chaos.Octopus.Module.Extension.Dto;
 using Chaos.Octopus.Module.Extension.v6;
 using Chaos.Portal.Core.Exceptions;
 using Moq;
@@ -32,10 +33,11 @@ namespace Chaos.Octopus.Test.Module.Extension.v6
     public void Set_GivenAuthenticatedUser_SetOnRepository()
     {
       var ext = Make_HeartbeatExtension();
+      var state = new ClusterState();
 
-      ext.Set();
+      ext.Set(state);
 
-      HeartbeatRepository.Verify(m => m.Set());
+      HeartbeatRepository.Verify(m => m.Set(It.IsAny<Octopus.Module.Data.Model.ClusterState>()));
     }
 
     private Heartbeat Make_HeartbeatExtension()

@@ -52,13 +52,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Module\Bindings\JsonParameterBinding.cs" />
     <Compile Include="Module\Bindings\JobParameterBinding.cs" />
     <Compile Include="Module\Data\HeartbeatRepository.cs" />
     <Compile Include="Module\Data\IHeartbeatRepository.cs" />
     <Compile Include="Module\Data\JobRepository.cs" />
     <Compile Include="Module\Data\Mapping\JobMapping.cs" />
+    <Compile Include="Module\Data\Model\ClusterState.cs" />
     <Compile Include="Module\Data\Model\Job.cs" />
     <Compile Include="Module\Data\OctopusRepository.cs" />
+    <Compile Include="Module\Extension\Dto\ClusterState.cs" />
     <Compile Include="Module\Extension\Dto\Job.cs" />
     <Compile Include="Module\Extension\v6\Heartbeat.cs" />
     <Compile Include="Module\Extension\v6\Job.cs" />

@@ -1,5 +1,5 @@
 ﻿CREATE TABLE `Heartbeat` (
-  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `CreatedOn` datetime NOT NULL,
-  PRIMARY KEY (`Id`)
+  `ClusterSate` TEXT NULL,
+  PRIMARY KEY (`CreatedOn`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

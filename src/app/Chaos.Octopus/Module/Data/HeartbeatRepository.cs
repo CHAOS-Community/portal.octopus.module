@@ -1,5 +1,7 @@
 ﻿using CHAOS.Data.MySql;
+using Chaos.Octopus.Module.Data.Model;
 using Chaos.Portal.Core.Exceptions;
+using MySql.Data.MySqlClient;
 
 namespace Chaos.Octopus.Module.Data
 {
@@ -12,9 +14,10 @@ namespace Chaos.Octopus.Module.Data
       Gateway = gateway;
     }
 
-    public void Set()
+    public void Set(ClusterState state)
     {
-      var result = Gateway.ExecuteNonQuery("Heartbeat_Set");
+      var result = Gateway.ExecuteNonQuery("Heartbeat_Set",
+        new MySqlParameter("ClusterState", Newtonsoft.Json.JsonConvert.SerializeObject(state)));
 
       if(result != 1) throw new UnhandledException("Heartbeat wasn't set");
     }

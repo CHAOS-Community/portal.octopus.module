@@ -1,4 +1,6 @@
-﻿namespace Chaos.Octopus.Module
+﻿using Chaos.Octopus.Module.Extension.Dto;
+
+namespace Chaos.Octopus.Module
 {
   using System.Collections.Generic;
   using System.Xml.Linq;
@@ -50,6 +52,7 @@
       OctopusRepository = new OctopusRepository(config.ConnectionString);
 
       portalApplication.MapRoute("/v6/Heartbeat", () => new Heartbeat(portalApplication, OctopusRepository.Heartbeat));
+      portalApplication.AddBinding(typeof(ClusterState), new JsonParameterBinding<ClusterState>());
     }
   }
 

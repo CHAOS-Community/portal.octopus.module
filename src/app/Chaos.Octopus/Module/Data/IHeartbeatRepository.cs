@@ -1,7 +1,9 @@
-﻿namespace Chaos.Octopus.Module.Data
+﻿using Chaos.Octopus.Module.Data.Model;
+
+namespace Chaos.Octopus.Module.Data
 {
   public interface IHeartbeatRepository
   {
-    void Set();
+    void Set(ClusterState state);
   }
 }

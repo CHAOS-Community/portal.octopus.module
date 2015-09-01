@@ -1,4 +1,5 @@
 ﻿using Chaos.Octopus.Module.Data;
+using Chaos.Octopus.Module.Extension.Dto;
 using Chaos.Portal.Core;
 using Chaos.Portal.Core.Exceptions;
 using Chaos.Portal.Core.Extension;
@@ -15,11 +16,15 @@ namespace Chaos.Octopus.Module.Extension.v6
       HeartbeatRepository = heartbeatRepository;
     }
 
-    public EndpointResult Set()
+    public EndpointResult Set(ClusterState state = null)
     {
       if(Request.IsAnonymousUser) throw new InsufficientPermissionsException();
 
-      HeartbeatRepository.Set();
+      HeartbeatRepository.Set(new Data.Model.ClusterState
+        {
+          ConnectedAgents = state.ConnectedAgents,
+          JobsInQueue = state.JobsInQueue
+        });
 
       return EndpointResult.Success();
     }

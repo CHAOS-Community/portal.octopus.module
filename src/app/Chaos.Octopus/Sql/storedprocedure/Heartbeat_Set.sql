@@ -1,10 +1,12 @@
-﻿CREATE PROCEDURE Heartbeat_Set()
+﻿CREATE PROCEDURE Heartbeat_Set(
+	ClusterState TEXT
+)
 BEGIN
 
 	INSERT INTO Heartbeat
-		(CreatedOn)
+		(CreatedOn, ClusterState)
 	VALUES
-		(UTC_TIMESTAMP());
+		(UTC_TIMESTAMP(), ClusterState);
 
 	SELECT ROW_COUNT();
 END
